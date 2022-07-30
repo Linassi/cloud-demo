@@ -14,16 +14,24 @@ public class OrderService {
     private OrderMapper orderMapper;
 
     @Autowired
-    private WebClient webClient;
+    private WebClient.Builder webClientBuilder;
+
+    private WebClient webClient = null;
 
     public Order queryOrderById(Long orderId) {
 
         // 1.查询订单
         Order order = orderMapper.findById(orderId);
+
+        if (webClient == null){
+            webClient = webClientBuilder.build();
+        }
         //调用WebClient发送http请求获取user
-        User user = webClient.get().uri("/user/" + order.getUserId())
+        User user = webClient.get().uri("http://userservice/user/" + order.getUserId())
             .retrieve().bodyToMono(User.class).block();
+
         order.setUser(user);
         return order;
+
     }
 }
