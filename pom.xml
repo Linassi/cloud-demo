@@ -10,7 +10,8 @@
     <modules>
         <module>user-service</module>
         <module>order-service</module>
-        <module>euruka-server</module>
+        <module>eureka-server</module>
+        <module>gateway</module>
     </modules>
 
     <packaging>pom</packaging>

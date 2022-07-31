@@ -8,6 +8,12 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   application:
     name: orderservice
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+      discovery:
+        cluster-name: SZ
+
 mybatis:
   type-aliases-package: cn.itcast.user.pojo
   configuration:
@@ -18,9 +24,12 @@ logging:
   pattern:
     dateformat: MM-dd HH:mm:ss:SSS
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8089/eureka
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8089/eureka
     #register-with-eureka: true
     #fetch-registry: true
+#usersevice:
+#  ribbon:
+#    NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule
