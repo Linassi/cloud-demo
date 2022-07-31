@@ -10,6 +10,10 @@ import org.springframework.web.client.RestTemplate;
 
 @Configuration
 public class RestTemplateConfig {
+    /**
+     * 加载restTemplate注入Spring容器
+     * @return
+     */
     @Bean
     @LoadBalanced
     public RestTemplate restTemplate() {
@@ -18,6 +22,11 @@ public class RestTemplateConfig {
         factory.setReadTimeout(3000);
         return new RestTemplate(factory);
     }
+
+    /**
+     * 负载均衡规则
+     * @return
+     */
     @Bean
     public IRule nacosRule(){
         return new NacosRule();
